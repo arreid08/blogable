@@ -18,8 +18,11 @@
         <a href="{% url 'post_list' %}">Posts</a>
         <a href="{% url 'comments_list' %}">Comments</a>
     </nav>
-    {% block content %}
-    {% endblock %}
+    <div>
+        <a href="{% url 'post_create' %}">New Post</a>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 
 </html>

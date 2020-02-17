@@ -6,6 +6,7 @@ class Post(models.Model):
     published = 'published'
     draft = 'draft'
     status = [(published, 'published'), (draft, 'draft')]
+    blog = models.TextField(default='Your blog post here')
     date = models.DateField()
 
     def __str__(self):

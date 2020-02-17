@@ -4,7 +4,7 @@
 <ul>
     {% for post in posts %}
         <li>
-            {{ post.title }}
+            <a href="{% url 'post_update' pk=post.pk %}">{{ post.title }}</a>
         </li>
     {% endfor %}
 </ul>
