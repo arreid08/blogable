@@ -1,0 +1,11 @@
+{% extends 'blogable/base.html' %}
+
+{% block content %}
+<ul>
+    {% for comment in comments %}
+        <li>
+            {{ comment.content }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
