@@ -5,10 +5,10 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'blog', 'date',)
+        fields = ('title', 'blog_content', 'date',)
 
 class CommentsForm(forms.ModelForm):
 
     class Meta:
         model = Comments
-        fields = ('title', 'content', 'date', 'user',)
+        fields = ('title', 'comment', 'date', 'user',)
