@@ -50,11 +50,14 @@ def post_detail(request, pk):
     return render(request, 'blogable/post_detail.html', {'post': post, 'form': form})
 
 # @login_required
-def post_create(request):
+def post_create(request, pk):
+    post = Blog.objects.get(pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            post.blog_id = pk
+            post.save()
             return redirect('post_list')
     else:
         form = PostForm()
@@ -81,3 +84,10 @@ def post_delete(request, pk):
 def comments_list(request):
     comments = Comments.objects.all()
     return render(request, 'blogable/comments_list.html', {'comments': comments}) 
+
+# @login_required
+def item_delete(request, pk):
+    item = Items.objects.get(pk=pk)
+    _list = item._list_id
+    Items.objects.get(pk=pk).delete()
+    return redirect('list_detail', pk=_list)

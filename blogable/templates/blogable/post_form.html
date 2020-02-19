@@ -13,9 +13,9 @@
       <div class="col-6">
         {{ form.date|as_crispy_field }}
       </div>
-      <div class="col-6">
+      {% comment %} <div class="col-6">
         {{ form.blog|as_crispy_field }}
-      </div>
+      </div> {% endcomment %}
     </div>
     {{ form.blog_content|as_crispy_field }}
     <button type="submit" class="btn btn-success">Publish</button>

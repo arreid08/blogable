@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="title">
-        <a class="btn btn-success" href="{% url 'post_create' %}" role="button">New Post</a>
+        <a class="btn btn-success" href="{% url 'post_create' pk=blog.pk %}" role="button">New Post</a>
         <h4>| {{blog.name}}</h4>
         <a class="btn btn-success" href="{% url 'post_list' %}" role="button">| Posts</a>
     </div>
