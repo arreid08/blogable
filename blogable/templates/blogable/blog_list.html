@@ -1,0 +1,11 @@
+{% extends 'blogable/base.html' %}
+
+{% block blogs %}
+<h4>Current Blogs</h4>
+    {% for blog in blogs %}
+        <li class="list-group-item">
+            {% comment %} <h4>{{ blog.name }}</h4> {% endcomment %}
+            <a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.name }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}

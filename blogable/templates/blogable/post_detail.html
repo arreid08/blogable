@@ -1,8 +1,25 @@
 {% extends 'blogable/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div>
     <h1>{{post.title}}</h1>
     <p>{{post.blog}}</p>
 </div>
+<p>Leave your comment here</p>
+<form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.user|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.date|as_crispy_field }}
+      </div>
+    </div>
+    {{ form.comment|as_crispy_field }}
+    <button type="submit" class="btn btn-primary">Post</button>
+    <a href="{% url 'post_list' %}" role="button" class="btn btn-primary">Return to Posts</a>
+</form>
 {% endblock %}

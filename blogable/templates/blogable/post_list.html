@@ -1,11 +1,18 @@
 {% extends 'blogable/base.html' %}
 
 {% block content %}
-<ul>
+
+<ul class="list-group list-group-flush">
     {% for post in posts %}
-        <li>
+        <li class="list-group-item">
             <a href="{% url 'post_update' pk=post.pk %}">{{ post.title }}</a>
+            <p class="floatDate">{{ post.date }}</p>
+            <br>
+            <a href="{% url 'post_update' pk=post.pk %}">Edit |</a>
+            <a href="{% url 'post_detail' pk=post.pk %}">View |</a>
+            <a href="{% url 'post_delete' pk=post.pk %}">Delete</a>
         </li>
     {% endfor %}
 </ul>
+
 {% endblock %}
