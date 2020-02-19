@@ -7,19 +7,16 @@
 <form method="post" novalidate>
     {% csrf_token %}
     <div class="row">
-      <div class="col-6">
-        {{ form.title|as_crispy_field }}
-      </div>
-      <div class="col-6">
-        {{ form.date|as_crispy_field }}
-      </div>
-      {% comment %} <div class="col-6">
-        {{ form.blog|as_crispy_field }}
-      </div> {% endcomment %}
+        <div class="col-6">
+            {{ form.title|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.date|as_crispy_field }}
+        </div>
     </div>
     {{ form.blog_content|as_crispy_field }}
     <button type="submit" class="btn btn-success">Publish</button>
-    <a href="{% url 'post_list' %}" role="button" class="btn btn-success">Return to Posts</a>
+    {% comment %} <a href="{% url 'blog_detail' pk=blog.pk %}" role="button" class="btn btn-success">Return to Posts</a> {% endcomment %}
 </form>
 
 {% endblock %}

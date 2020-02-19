@@ -21,10 +21,10 @@ Blogable is a place where you can create your own blog.  This is a backend page 
 - Create accounts for new users.
 - Allow people to post comments about each post.
 - Apply Bootstrap to this project.
-- Style the app from mobile out desktop.
 
 ### PostMVP EXAMPLE
 - Transfer the Posts into a shareable blog.
+- Style the app from mobile out.
 - 
 - 
 

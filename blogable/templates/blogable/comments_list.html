@@ -1,13 +1,16 @@
 {% extends 'blogable/base.html' %}
 
 {% block content %}
-<ul>
+
+<ul class="list-group list-group-flush">
     {% for comment in comments %}
-        <li>
+        <li class="list-group-item">
+            {{ comment.title }}
             {{ comment.comment }}
             {{ comment.date }}
             {{ comment.user }}
         </li>
     {% endfor %}
 </ul>
+
 {% endblock %}
