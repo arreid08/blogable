@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'blogable',
     'django_extensions',
     'crispy_forms',
-    'herokuapp',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
