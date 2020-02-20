@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'blogable_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogable',
-        'USER': 'blogableuser',
-        'PASSWORD': 'blogable',
-        'HOST': 'localhost'
+        'NAME': 'd5k64oqueo8a5o',
+        'USER': 'zqeyuhamfgxtko',
+        'PASSWORD': '322a0455f27c1c0f3172190b94aeb95162f0f50db1bf4564b78dd01967dd35cb',
+        'HOST': 'ec2-3-213-192-58.compute-1.amazonaws.com'
     }
 }
 
