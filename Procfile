@@ -1,0 +1,1 @@
+web: gunicorn blogable_project.wsgi --log-file -
