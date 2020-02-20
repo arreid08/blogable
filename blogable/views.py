@@ -11,8 +11,9 @@ def blog_list(request):
 
 # @login_required
 def blog_detail(request, pk):
+    blogs = Blog.objects.all()
     blog = Blog.objects.get(pk=pk)
-    return render(request, 'blogable/blog_detail.html', {'blog': blog})
+    return render(request, 'blogable/blog_detail.html', {'blogs': blogs, 'blog': blog})
 
 # @login_required
 def blog_create(request):
@@ -34,20 +35,18 @@ def post_list(request):
 
 # @login_required
 def post_detail(request, pk):
+    blogs = Blog.objects.all()
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         form = CommentsForm(request.POST)
         if form.is_valid():
-            # item is created in the code but not saved in the database yet.
             comment = form.save(commit=False)
-            # this associates the comment with a post.
             comment.post_id = pk
-            # this save commits it to the database.
             comment.save()
             return redirect('post_detail', pk=pk)
     else:
         form = CommentsForm()
-    return render(request, 'blogable/post_detail.html', {'post': post, 'form': form})
+    return render(request, 'blogable/post_detail.html', {'blogs': blogs, 'post': post, 'form': form})
 
 # @login_required
 def post_create(request, pk):
@@ -65,15 +64,18 @@ def post_create(request, pk):
 
 # @login_required
 def post_update(request, pk):
+    blogs = Blog.objects.all()
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
-            return redirect('post_list')
+            # post.blog_id = pk
+            # post.save()
+            return redirect('blog_detail', pk=post.blog_id)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blogable/post_form.html', {'form': form})
+    return render(request, 'blogable/post_form.html', {'blogs': blogs, 'form': form})
 
 # @login_required
 def post_delete(request, pk):
@@ -84,8 +86,9 @@ def post_delete(request, pk):
 
 # @login_required
 def comments_list(request):
+    blogs = Blog.objects.all()
     comments = Comments.objects.all()
-    return render(request, 'blogable/comments_list.html', {'comments': comments}) 
+    return render(request, 'blogable/comments_list.html', {'blogs': blogs, 'comments': comments}) 
 
 # @login_required
 def comments_delete(request, pk):

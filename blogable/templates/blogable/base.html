@@ -19,12 +19,7 @@
         <div id="wrapper">
             <div class="sidenav">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sideNavBar">
-                        <span class="icon-bar">-</span>
-                        <br>
-                        <span class="icon-bar">-</span>
-                        <br>
-                        <span class="icon-bar">-</span>
-                </button>
+                    Toggle Sidebar</button>
                 <div class="list-group list-group-flush" id="sideNavBar">
                     <div class="nav-item dropdown">
                         <p class="nav-item dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,9 +30,8 @@
                             <a class="dropdown-item" href="{% url 'blog_create' %}">New Blog</a>
                         </div>
                     </div>
-                    {% comment %} <a href="{% url 'blog_detail' pk=blog.pk %}" class="list-group-item list-group-item-action">Posts</a> {% endcomment %}
-                    {% comment %} <a href="{% url 'post_list' %}" class="list-group-item list-group-item-action">Posts</a> {% endcomment %}
-                    <a href="{% url 'comments_list' %}" class="list-group-item list-group-item-action">Comments</a>   
+                    {% block Sidebar %}
+                    {% endblock %}
                 </div>
             </div>
         </div>

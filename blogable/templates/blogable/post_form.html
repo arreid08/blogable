@@ -2,6 +2,23 @@
 
 {% load crispy_forms_tags %}
 
+{% block blogs %}
+
+<div class="list-group-item">
+    {% for blog in blogs %}
+        <a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.name }}</a>  
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block Sidebar %}
+
+{% comment %} <a href="{% url 'blog_detail' pk=blog.pk %}" class="list-group-item list-group-item-action">Posts</a> {% endcomment %}
+<a href="{% url 'comments_list' %}" class="list-group-item list-group-item-action">Comments</a>  
+
+{% endblock %}
+
 {% block content %}
 
 <form method="post" novalidate>

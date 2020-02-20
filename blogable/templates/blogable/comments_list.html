@@ -1,14 +1,30 @@
 {% extends 'blogable/base.html' %}
 
+{% block blogs %}
+
+<div class="list-group-item">
+    {% for blog in blogs %}
+        <a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.name }}</a>  
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block Sidebar %}
+
+{% comment %} <a href="{% url 'blog_detail' pk=blog.pk %}" class="list-group-item list-group-item-action">Posts</a> {% endcomment %}
+<a href="{% url 'comments_list' %}" class="list-group-item list-group-item-action">Comments</a>  
+
+{% endblock %}
+
 {% block content %}
 
 <ul class="list-group list-group-flush">
     {% for comment in comments %}
         <li class="list-group-item">
-            {{ comment.title }}
-            {{ comment.comment }}
-            {{ comment.date }}
-            {{ comment.user }}
+            <p>{{ comment.user }} commented on post {{ comment.title }}:</p>
+            <small class="text-muted">{{ comment.date }}</small>
+            <p>{{ comment.comment }}</p>
         </li>
     {% endfor %}
 </ul>
