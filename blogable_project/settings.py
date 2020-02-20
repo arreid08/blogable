@@ -25,7 +25,7 @@ SECRET_KEY = 'ka@1y&&!tqxx(hed=h8!$ozg@vcd%eyo*3yxqb3215!@tq)d=+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://blogable.herokuapp.com/]
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'https://blogable.herokuapp.com/']
 
 
 # Application definition
