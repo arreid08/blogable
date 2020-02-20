@@ -40,7 +40,7 @@ def post_detail(request, pk):
         if form.is_valid():
             # item is created in the code but not saved in the database yet.
             comment = form.save(commit=False)
-            # this associates the item with a list.
+            # this associates the comment with a post.
             comment.post_id = pk
             # this save commits it to the database.
             comment.save()

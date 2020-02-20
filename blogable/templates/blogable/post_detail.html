@@ -20,6 +20,6 @@
     </div>
     {{ form.comment|as_crispy_field }}
     <button type="submit" class="btn btn-primary">Post</button>
-    <a href="{% url 'post_list' %}" role="button" class="btn btn-primary">Return to Posts</a>
+    {% comment %} <a href="{% url 'post_list' %}" role="button" class="btn btn-primary">Return to Posts</a> {% endcomment %}
 </form>
 {% endblock %}

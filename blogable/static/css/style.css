@@ -49,4 +49,9 @@
     .title {
         display: inline-block;
     }
+
+    .icon-bar {
+        padding: 0;
+        height: 2px;
+    }
 }
