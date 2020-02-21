@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blogable',
     'django_extensions',
     'crispy_forms',
+    'bootstrap_modal_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -36,6 +36,7 @@ def post_list(request):
 # @login_required
 def post_detail(request, pk):
     blogs = Blog.objects.all()
+    blog = Blog.objects.get(pk=pk)
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         form = CommentsForm(request.POST)
@@ -46,11 +47,12 @@ def post_detail(request, pk):
             return redirect('post_detail', pk=pk)
     else:
         form = CommentsForm()
-    return render(request, 'blogable/post_detail.html', {'blogs': blogs, 'post': post, 'form': form})
+    return render(request, 'blogable/post_detail.html', {'blogs': blogs, 'blog': blog, 'post': post, 'form': form})
 
 # @login_required
 def post_create(request, pk):
     blogs = Blog.objects.all()
+    blog = Blog.objects.get(pk=pk)
     post = Blog.objects.get(pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -61,22 +63,21 @@ def post_create(request, pk):
             return redirect('blog_detail', pk=pk)
     else:
         form = PostForm()
-    return render(request, 'blogable/post_form.html', {'form': form})
+    return render(request, 'blogable/post_form.html', {'blogs': blogs, 'blog': blog, 'form': form})
 
 # @login_required
 def post_update(request, pk):
     blogs = Blog.objects.all()
+    blog = Blog.objects.get(pk=pk)
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
-            # post.blog_id = pk
-            # post.save()
             return redirect('blog_detail', pk=post.blog_id)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blogable/post_form.html', {'blogs': blogs, 'form': form})
+    return render(request, 'blogable/post_form.html', {'blogs': blogs, 'blog': blog, 'form': form})
 
 # @login_required
 def post_delete(request, pk):
@@ -90,6 +91,21 @@ def comments_list(request):
     blogs = Blog.objects.all()
     comments = Comments.objects.all()
     return render(request, 'blogable/comments_list.html', {'blogs': blogs, 'comments': comments}) 
+
+# @login_required
+def comments_create(request, pk):
+    blogs = Blog.objects.all()
+    comment = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = CommentsForm(request.POST)
+        if form.is_valid():
+            comments = form.save(commit=False)
+            comments.post_id = pk
+            comments.save()
+            return redirect('post_detail', pk=pk)
+    else:
+        form = CommentsForm()
+    return render(request, 'blogable/comments_form.html', {'blogs': blogs, 'form': form})
 
 # @login_required
 def comments_delete(request, pk):

@@ -1,4 +1,5 @@
 from django import forms
+from bootstrap_modal_forms.forms import BSModalForm
 from .models import Blog, Post, Comments
 
 class BlogForm(forms.ModelForm):
@@ -13,7 +14,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'blog_content', 'date',)
 
-class CommentsForm(forms.ModelForm):
+class CommentsForm(BSModalForm):
 
     class Meta:
         model = Comments

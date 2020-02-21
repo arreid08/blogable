@@ -12,25 +12,7 @@
 
 {% endblock %}
 
-{% block Sidebar %}
-
-<a href="{% url 'blog_detail' pk=blog.pk %}" class="list-group-item list-group-item-action">Posts</a>
-<a href="{% url 'comments_list' %}" class="list-group-item list-group-item-action">Comments</a>  
-
-{% endblock %}
-
 {% block content %}
-<div>
-    <h3>{{post.title}}</h3>
-    <small>Blog: {{post.blog}}</small>
-    <h5>{{ post.blog_content }}</h5>
-
-</div>
-<br>
-<br>
-<br>
-<br>
-<p>Leave your comment <a href="{% url 'comments_create' pk=post.pk %}" class="link">here</a></p>
 
 <form method="post" novalidate>
     {% csrf_token %}
@@ -45,4 +27,5 @@
     {{ form.comment|as_crispy_field }}
     <button type="submit" class="btn btn-success">Post</button>
 </form>
+
 {% endblock %}
