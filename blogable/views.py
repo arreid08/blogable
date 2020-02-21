@@ -50,6 +50,7 @@ def post_detail(request, pk):
 
 # @login_required
 def post_create(request, pk):
+    blogs = Blog.objects.all()
     post = Blog.objects.get(pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST)
