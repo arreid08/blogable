@@ -30,7 +30,7 @@
 <br>
 <br>
 <br>
-<p>Leave your comment <a href="{% url 'comments_create' pk=post.pk %}" class="link">here</a></p>
+<p>Leave your comment here:</p>
 
 <form method="post" novalidate>
     {% csrf_token %}
@@ -45,4 +45,14 @@
     {{ form.comment|as_crispy_field }}
     <button type="submit" class="btn btn-success">Post</button>
 </form>
+
+<ul class="list-group list-group-flush">
+    {% for comment in post.comment.all %}
+        <li class="list-group-item">
+            <p><b>{{ comment.user }}</b> commented on post <b>'{{ comment.title }}'</b>:</p>
+            <small class="text-muted">{{ comment.date }}</small>
+            <p>{{ comment.comment }}</p>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

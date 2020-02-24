@@ -23,7 +23,7 @@
 <ul class="list-group list-group-flush">
     {% for comment in comments %}
         <li class="list-group-item">
-            <p>{{ comment.user }} commented on post {{ comment.title }}:</p>
+            <p><b>{{ comment.user }}</b> commented on post <b>'{{ comment.title }}'</b>:</p>
             <small class="text-muted">{{ comment.date }}</small>
             <p>{{ comment.comment }}</p>
         </li>

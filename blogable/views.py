@@ -42,7 +42,7 @@ def post_detail(request, pk):
         form = CommentsForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.post_id = pk
+            comment.title_id = pk
             comment.save()
             return redirect('post_detail', pk=pk)
     else:
@@ -91,21 +91,6 @@ def comments_list(request):
     blogs = Blog.objects.all()
     comments = Comments.objects.all()
     return render(request, 'blogable/comments_list.html', {'blogs': blogs, 'comments': comments}) 
-
-# @login_required
-def comments_create(request, pk):
-    blogs = Blog.objects.all()
-    comment = Post.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = CommentsForm(request.POST)
-        if form.is_valid():
-            comments = form.save(commit=False)
-            comments.post_id = pk
-            comments.save()
-            return redirect('post_detail', pk=pk)
-    else:
-        form = CommentsForm()
-    return render(request, 'blogable/comments_form.html', {'blogs': blogs, 'form': form})
 
 # @login_required
 def comments_delete(request, pk):

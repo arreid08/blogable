@@ -1,10 +1,13 @@
+.mt-2 {
+    background-color: #0000;
+}
 
 @media screen and (min-width: 1024px) {
     header {
         position: absolute;
         left: 20px;
         right: 0;
-        height: 92px;
+        height: 92px; 
     }
 
     .sidenav {
